@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ledZepplin">
+    <head>
+        <meta charset="UTF-8">
+        <title>Led Zeppelin</title>
+        <!--<script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>-->
+        <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+        <link rel="stylesheet" href="styles/paper-bootstrap.min.css">
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body ng-cloak>
+        <sound-manager></sound-manager>
+        <!--App navigation-->
+        <header ng-include="'app/modules/core/views/header.views.html'"></header>
+        <!--App container-->
+        <div class="container-fluid page-header">
+            <div ui-view data-autoscroll="true"></div>
+        </div>
+        <footer ng-include="'app/modules/core/views/footer.views.html'"></footer>
+
+        <!--required files-->
+
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/lodash/lodash.js"></script>
+        <script src="bower_components/restangular/src/restangular.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+        <script src="bower_components/angular-soundmanager2/dist/angular-soundmanager2.min.js"></script>
+
+
+
+        <!--My files-->
+        <script src="app/app.js"></script>
+        <script src="app/modules/albums/services/album.service.js"></script>
+        <script src="app/modules/albums/services/dataResource.service.js"></script>
+        <script src="app/modules/core/config/core.routes.js"></script>
+        <!--<script src="app/modules/core/controller/core.controller.js"></script>-->
+        <script src="app/modules/albums/controllers/modal.controller.js"></script>
+        <script src="app/modules/albums/controllers/albums.controller.js"></script>
+        <script src="app/modules/albums/controllers/settings.controller.js"></script>
+        <script src="app/modules/albums/controllers/albumDetails.controller.js"></script>
+        <script src="app/modules/albums/filter/unique.filter.js"></script>
+
+
+
+    </body>
+</html>

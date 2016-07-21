@@ -1,0 +1,13 @@
+<section>
+    <div class="navbar-fixed-bottom bg-success" ng-if="isPlaying">
+        <h6>Playing: {{currentPlaying.title}}
+            <span class="text-success">{{ currentPostion }} / </span>
+            <span class="text-primary">{{ currentDuration }}</span>
+            <span class="pull-right">
+                <button class="btn btn-warning" music-volume data-type="increase">+</button>
+                <button class="btn btn-warning" music-volume data-type="decrease">-</button>
+                <button type="button" class="btn btn-info" stop-music ng-if="isPlaying">Stop Preview</button>
+            </span>
+        </h6>
+    </div>
+</section>

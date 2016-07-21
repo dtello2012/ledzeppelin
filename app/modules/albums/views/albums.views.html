@@ -1,0 +1,123 @@
+<section>
+<div class="row">
+    <div class="hero-image"></div>
+</div>
+</section>
+<section class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <h4>
+                    <label for="search">
+                        Album Name:
+                    </label>
+                </h4>
+                <input type="text" name="search" id="search" class="form-control" ng-model="vm.searchAlbum">
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <h4>
+                    <label for="filterAlbums">
+                        Album Type:
+                    </label>
+                </h4>
+                <select name="filterAlbums" id="filterAlbums" class="form-control" data-ng-model="vm.orderBy">
+                    <option ng-repeat="album in vm.albums | unique: 'type'" data-ng-value="album.type" ng-selected="selected">{{album.type}}</option>
+                    <option value="name">Name</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h4>
+                <label for="button">&nbsp;</label>
+            </h4>
+            <div class="pull-right">
+                <button type="button" name="button" id="button" class="btn btn-info" ui-sref="settings.add">Add Album</button>
+            </div>
+
+            <!--<div class="navbar-collapse collapse" id="navbar-main" ng-if="followingAlbums.length > 0">-->
+                <!--<ul class="nav navbar-nav navbar-right">-->
+                    <!--<li class="dropdown">-->
+                        <!--<a class="dropdown-toggle" data-toggle="dropdown" id="themes">-->
+                            <!--<span class="badge">{{followingAlbums.length}}</span> Following <span class="caret"></span>-->
+                        <!--</a>-->
+                        <!--<ul class="dropdown-menu" aria-labelledby="themes">-->
+                            <!--<li ng-repeat="album in followingAlbums">-->
+                                <!--<a ui-sref="details({ id: album.id})">{{album.name}}</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4"
+             ng-repeat="album in vm.albums  | filter: vm.searchAlbum | unique: 'name' | orderBy: vm.orderBy  track by $index">
+            <div class="thumbnail card-shadow">
+                <h3 class="border-bottom-solid">{{album.name | limitTo: 25}} <i ng-if="album.name.length > 15">&hellip;</i></h3>
+                <div class="thumbnail__img" ng-repeat="image in album.images">
+                    <a href="" ui-sref="details({ id: album.id})">
+                        <img ng-src="{{image.url}}" alt="{{album.name}}" ng-if="$index === 0">
+                    </a>
+                </div>
+                <div class="caption">
+                    <div class="label-container">
+                        <span class="album-type-label">
+                            <span class="label label-info">{{album.type}}</span>
+                        </span>
+                        <span class="copy-label" ng-if="album.name.indexOf('copy') > -1" ng-class="{'following': album.following}">
+                            <span class="label label-danger">
+                                Copy
+                            </span>
+                        </span>
+                        <span class="following-label" ng-if="album.following === true">
+                            <span class="label label-warning">Following</span>
+                        </span>
+                    </div>
+                    <p>
+                        &nbsp;
+                    </p>
+                    <p>
+                        <span ng-if="album.rating > 0">
+                            Album Rating:
+                            <span uib-rating ng-model="album.rating" max="5" read-only="true"></span><br>
+                        </span>
+                    </p>
+                    <p>
+                        <span ng-if="!album.rating">
+                            Album Rating: <b class="text-danger">Not Rated</b>
+                        </span>
+                    </p>
+                    <p>
+                        <a href="" ng-click="vm.viewTracks(album.id)">View Tracks</a>
+                    </p>
+                    <div ng-if="vm.id === album.id">
+                        <h4>Tracks List</h4>
+                        <p ng-if="vm.isCopy === false && vm.errorStatus === false">
+                            Click on the track to preview song
+                        </p>
+                        <ol class="tracks-list">
+                            <li ng-repeat="song in vm.songs" ng-if="vm.errorStatus === false">
+                                <a music-player="play" data-add-song="song" music-volume="0.5">{{song.title}}</a>
+                            </li>
+                            <li ng-if="vm.isCopy === true || vm.errorStatus === true">This is a copy or new album with no tracks</li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <p class="text-right">
+                            <a class="text-info" ng-click="vm.copyAlbum(album)" stop-music>Copy Album</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,188 @@
+/*
+    angular ngCloack
+*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+/*
+    overrides
+*/
+
+body {
+    background: #fafafa;
+}
+
+a, a:hover, a:active, a:focus {
+    outline: none;
+    text-decoration: none;
+}
+a:hover {
+    cursor: pointer;
+}
+
+.panel-title > a {
+    display: block;
+
+}
+.panel-title > a img {
+    margin-bottom: 10px;
+}
+
+.album-name-wrapper {
+    display: inline-block;
+ }
+
+.album-name-wrapper span {
+    display: block;
+    padding: 3px;
+}
+
+
+h2 {
+    margin-top: 0;
+}
+
+.navbar-brand img{
+    width: 45%;
+}
+
+/*
+    btns
+*/
+.btn {
+    min-width: 82px;
+}
+.btn:focus, .btn:active {
+    outline: none;
+}
+.btn-primary--add-album {
+    margin-top: 50px;
+}
+
+/*
+    custom CSS
+*/
+
+.no-image {
+    width: 300px;
+    height: 300px;
+}
+.text--large {
+    font-size: 30px;
+}
+
+.badge {
+    background-color: #5bc0de;
+    position: relative;
+    left: -9px;
+    top: -2px;
+    padding: 5px 10px;
+}
+.badge-success {
+    background-color: forestgreen;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+.navbar-fixed-bottom h6{
+    margin-bottom: 0;
+    line-height: 2.9;
+    padding-left: 15px;
+    margin-top: 0;
+}
+
+
+.thumbnail {
+    border: 0;
+}
+.card-shadow {
+    background: #ffffff;
+    box-shadow: 0 1px 5px rgba(0,0,0, 0.15);
+}
+
+.thumbnail__img {
+    max-height: 283px;
+    overflow: hidden;
+}
+
+.thumbnail__img img {
+    width: 100%;
+}
+
+.page-header {
+    border-bottom: 0;
+}
+
+.tracks-list {
+    margin-bottom: 30px;
+}
+
+.grid-item {
+    width: 25%;
+    float: left;
+}
+
+.grid-item--width2 {
+    width: 50%;
+}
+
+.label-container {
+    position: relative;
+}
+
+.label-container .album-type-label, .copy-label, .following-label {
+    position: absolute;
+    top: -20px;
+}
+
+.label-container .album-type-label {
+    left: 8px;
+}
+.label-container .copy-label {
+    left: 55px;
+}
+.label-container .copy-label.following {
+    left: 118px;
+}
+.label-container .following-label {
+    left: 55px;
+}
+
+.hero-image {
+    height: 400px;
+    width: 100%;
+    background: url("../images/home-cover.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.hero-image--details {
+    height: 400px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+.glyphicon-star:before {
+    color: gold;
+}
+.glyphicon-star-empty:before {
+    color: orange;
+}
+.border-bottom-solid {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.clicklable:hover {
+    cursor: pointer;
+}

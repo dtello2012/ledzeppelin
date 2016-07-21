@@ -1,0 +1,68 @@
+<div class="row" ng-if="vm.editing === true">
+    <div class="hero-image--details" style="background-image: url({{vm.album.images[0].url}})">
+        <!--Leave Empty-->
+    </div>
+</div>
+<section class="container">
+    <div class="row">
+        <p class="margin-top-10">
+            <a href="" ui-sref="home">Home</a> > {{vm.editing ? 'Edit': 'Add'}} Album
+        </p>
+    </div>
+</section>
+<section class="container card-shadow">
+    <h1>{{vm.editing ? 'Edit': 'Add'}} Album</h1>
+    <h2>
+        Name: {{vm.album.name}}
+    </h2>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-1 col-lg-offset-1">
+            <span ng-repeat="image in vm.album.images">
+                <img class="img-responsive" ng-src="{{image.url}}" alt="vm.album.name" ng-if="$index === 0">
+            </span>
+            <span ng-if="vm.editing === false">
+                <img class="img-responsive" src="http://www.seamgen.com/images/team/blank.jpg" alt="">
+            </span>
+            <p>&nbsp;</p>
+        </div>
+        <div class="col-sm-6 col-md-4 col-md-offset-2 col-lg-offset-1">
+            <form class="form" name="settingsForm" novalidate>
+                <div class="form-group">
+                    <label for="albumName">Album Name</label>
+                    <input type="text" class="form-control" id="albumName" ng-model="vm.album.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="albumType">Album Type</label>
+                    <select name="" id="albumType" class="form-control">
+                        <option value="album">Album</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Album Type</label>
+                        <h4>
+                            <span uib-rating ng-model="vm.album.rating" data-max="5" data-read-only="false" required></span>
+                        </h4>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="button" class="btn btn-info form-control" ng-model="vm.album.following" uib-btn-checkbox data-btn-checkbox-true="true" data-btn-checkbox-false="false">
+                            {{vm.album.following ? "Following": "Follow"}}
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+                            <button type="button" class="btn btn-primary form-control" ui-sref="home">Cancel</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <button type="button" class="btn btn-danger form-control" ng-disabled="settingsForm.$invalid" ng-click="vm.saveAlbum()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,77 @@
+
+<div class="row">
+    <div class="hero-image--details" style="background-image: url({{vm.album.images[0].url}})">
+        <!--Leave Empty-->
+    </div>
+</div>
+<section class="container">
+    <div class="row">
+        <p class="margin-top-10">
+            <a href="" ui-sref="home">Home</a> > Album details
+        </p>
+    </div>
+</section>
+<section class="container card-shadow">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <h1>{{vm.album.name}}</h1>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <ul class="list-inline margin-top-20 pull-right">
+                <li>
+                    <a class="text-info pull-right margin-top-20" ui-sref="settings.edit({id: vm.album.id})" stop-music>
+                        Edit album
+                    </a>
+                </li>
+                <li>
+                    <a class="pull-right margin-top-20" ng-click="vm.removeAlbum(vm.album)">
+                        Delete
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <img class="img-responsive" ng-src="{{vm.album.images[0].url}}" alt="">
+            <p>&nbsp;</p>
+            <div ng-if="vm.album.available_markets.length > 0">
+                <h3>
+                    Available Markets
+                </h3>
+                <ul class="list-unstyled list-inline">
+                    <li ng-repeat="state in vm.album.available_markets">
+                        {{state}}
+                    </li>
+                </ul>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <h2>Rating:
+                <span uib-rating data-ng-model="vm.album.rating" data-max="5" data-read-only="true"></span>
+            </h2>
+            <h3>Tracks</h3>
+            <table class="table table-striped">
+                <tr ng-repeat="song in vm.songs">
+                    <td>{{$index + 1}}</td>
+                    <td class="clicklable" music-player="play" data-add-song="song">
+                        {{song.title}}
+                    </td>
+                </tr>
+            </table>
+            <!--<ol>-->
+                <!--<li ng-repeat="song in vm.songs">-->
+                    <!--<a  music-player="play" data-add-song="song" music-volume="0.5">{{song.title}}</a>-->
+                <!--</li>-->
+            <!--</ol>-->
+            <ul class="list-unstyled" ng-if="vm.album.copy || vm.invalid === true;">
+                <li>This is a copy of an Album or a new album with no tracks.</li>
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+
+
