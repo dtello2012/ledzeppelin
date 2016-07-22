@@ -11,10 +11,9 @@
     </div>
 </section>
 <section class="container card-shadow">
-    <h1>{{vm.editing ? 'Edit': 'Add'}} Album</h1>
-    <h2>
-        Name: {{vm.album.name}}
-    </h2>
+    <h1>
+       {{vm.album.name}}
+    </h1>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-1 col-lg-offset-1">
             <span ng-repeat="image in vm.album.images">
@@ -26,6 +25,7 @@
             <p>&nbsp;</p>
         </div>
         <div class="col-sm-6 col-md-4 col-md-offset-2 col-lg-offset-1">
+            <h2>{{vm.editing ? 'Edit': 'Add'}} Album</h2>
             <form class="form" name="settingsForm" novalidate>
                 <div class="form-group">
                     <label for="albumName">Album Name</label>
@@ -55,7 +55,7 @@
                     <div class="row">
 
                         <div class="col-xs-12 col-sm-6">
-                            <button type="button" class="btn btn-primary form-control" ui-sref="home">Cancel</button>
+                            <button type="button" class="btn btn-primary form-control" ui-sref="details({id: vm.album.id})">Cancel</button>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <button type="button" class="btn btn-danger form-control" ng-disabled="settingsForm.$invalid" ng-click="vm.saveAlbum()">Save</button>
@@ -63,6 +63,7 @@
                     </div>
                 </div>
             </form>
+            <p>&nbsp;</p>
         </div>
     </div>
 </section>
