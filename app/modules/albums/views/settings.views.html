@@ -1,5 +1,9 @@
-<!--App navigation-->
-<header ng-include="'app/modules/core/views/header.views.html'"></header>
+<div class="row">
+    <div class="col-xs-12">
+        <!--App navigation-->
+        <header ng-include="'app/modules/core/views/header.views.html'"></header>
+    </div>
+</div>
 <div class="row" ng-if="vm.editing === true">
     <div class="hero-image--details" style="background-image: url({{vm.album.images[0].url}})">
         <!--Leave Empty-->
@@ -17,7 +21,7 @@
        {{vm.album.name}}
     </h1>
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-1 col-lg-offset-1">
+        <div class="col-sm-6 col-md-4">
             <span ng-repeat="image in vm.album.images">
                 <img class="img-responsive" ng-src="{{image.url}}" alt="vm.album.name" ng-if="$index === 0">
             </span>
