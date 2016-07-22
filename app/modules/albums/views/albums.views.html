@@ -60,7 +60,7 @@
                         <span class="album-type-label">
                             <span class="label label-info">{{album.type}}</span>
                         </span>
-                        <span class="copy-label" ng-if="album.name.indexOf('copy') > -1" ng-class="{'following': album.following}">
+                        <span class="copy-label" ng-if="album.copy === true" ng-class="{'following': album.following}">
                             <span class="label label-danger">
                                 Copy
                             </span>

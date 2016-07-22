@@ -35,7 +35,8 @@
             <form class="form" name="settingsForm" novalidate>
                 <div class="form-group">
                     <label for="albumName">Album Name</label>
-                    <input type="text" class="form-control" id="albumName" ng-model="vm.album.name" required>
+                    <input ng-if="!vm.album.newAlbum && !vm.album.copy && vm.editing === true" type="text" class="form-control" id="albumName" ng-model="vm.album.name" ng-readonly="true" required>
+                    <input ng-if="vm.album.copy === true || vm.album.newAlbum === true || vm.editing === false" type="text" class="form-control" id="albumName" ng-model="vm.album.name" required>
                 </div>
                 <div class="form-group">
                     <label for="albumType">Album Type</label>
@@ -61,7 +62,8 @@
                     <div class="row">
 
                         <div class="col-xs-12 col-sm-6">
-                            <button type="button" class="btn btn-primary form-control" ui-sref="details({id: vm.album.id})">Cancel</button>
+                            <button ng-if="vm.editing === true" type="button" class="btn btn-primary form-control" ui-sref="details({id: vm.album.id})">Cancel</button>
+                            <button ng-if="vm.editing === false" type="button" class="btn btn-primary form-control" ui-sref="home">Cancel</button>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <button type="button" class="btn btn-danger form-control" ng-disabled="settingsForm.$invalid" ng-click="vm.saveAlbum()">Save</button>

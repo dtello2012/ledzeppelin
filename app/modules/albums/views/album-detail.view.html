@@ -28,7 +28,7 @@
                         Edit album
                     </a>
                 </li>
-                <li ng-if="vm.album.copy === true">
+                <li ng-if="vm.album.copy === true || vm.album.newAlbum === true">
                     <a class="pull-right margin-top-20" ng-click="vm.removeAlbum(vm.album)">
                         Delete
                     </a>
