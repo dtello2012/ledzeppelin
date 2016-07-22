@@ -52,6 +52,9 @@ h2 {
 .btn {
     min-width: 82px;
 }
+.btn:focus {
+    outline: 0;
+}
 .btn:focus, .btn:active {
     outline: none;
 }
@@ -185,4 +188,7 @@ h2 {
 
 .clicklable:hover {
     cursor: pointer;
+}
+.clicklable:focus {
+    outline: none;
 }

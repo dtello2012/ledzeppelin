@@ -1,3 +1,5 @@
+<!--App navigation-->
+<header ng-include="'app/modules/core/views/header.views.html'"></header>
 <div class="row" ng-if="vm.editing === true">
     <div class="hero-image--details" style="background-image: url({{vm.album.images[0].url}})">
         <!--Leave Empty-->
@@ -40,7 +42,7 @@
                 <div class="form-group">
                     <label>Album Type</label>
                         <h4>
-                            <span uib-rating ng-model="vm.album.rating" data-max="5" data-read-only="false" required></span>
+                            <span class="clicklable" uib-rating ng-model="vm.album.rating" data-max="5" data-read-only="false" required></span>
                         </h4>
                 </div>
                 <div class="row">

@@ -14,12 +14,12 @@
             var obj;
             vm.editing = true;
             vm.album = {};
+            $scope.followingAlbums = [];
+
             if(vm.album.following === undefined) {
               vm.album.following = false;
             }
-
-
-
+            
             vm.album.rating = 0;
             if($state.params.id === undefined) {
               console.log('undefined state ID');
@@ -77,6 +77,11 @@
                 if(vm.editing === true) {
                   vm.album = angular.copy(_.find(vm.albums, {"id": $state.params.id}));
                 }
+                _.forEach(vm.albums, function(value, key) {
+                  if(value.following === true) {
+                    $scope.followingAlbums.push(value);
+                  }
+                });
               });
             }
 

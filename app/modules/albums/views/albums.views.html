@@ -1,3 +1,5 @@
+<!--App navigation-->
+<header ng-include="'app/modules/core/views/header.views.html'"></header>
 <section>
 <div class="row">
     <div class="hero-image"></div>
@@ -36,20 +38,7 @@
                 <button type="button" name="button" id="button" class="btn btn-info" ui-sref="settings.add">Add Album</button>
             </div>
 
-            <!--<div class="navbar-collapse collapse" id="navbar-main" ng-if="followingAlbums.length > 0">-->
-                <!--<ul class="nav navbar-nav navbar-right">-->
-                    <!--<li class="dropdown">-->
-                        <!--<a class="dropdown-toggle" data-toggle="dropdown" id="themes">-->
-                            <!--<span class="badge">{{followingAlbums.length}}</span> Following <span class="caret"></span>-->
-                        <!--</a>-->
-                        <!--<ul class="dropdown-menu" aria-labelledby="themes">-->
-                            <!--<li ng-repeat="album in followingAlbums">-->
-                                <!--<a ui-sref="details({ id: album.id})">{{album.name}}</a>-->
-                            <!--</li>-->
-                        <!--</ul>-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</div>-->
+
 
         </div>
     </div>

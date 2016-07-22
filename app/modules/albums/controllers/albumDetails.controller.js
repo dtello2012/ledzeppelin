@@ -14,6 +14,7 @@
       function($stateParams, $log, albums, $scope, albumResource, _, $timeout, $state, $uibModal){
       var vm = this;
       vm.invalid = false;
+        $scope.followingAlbums = [];
 
 
 
@@ -57,6 +58,11 @@
         },function(err){
           vm.invalid = true;
           console.error(err.data.error.message);
+        });
+        _.forEach(vm.albums, function(value, key) {
+          if(value.following === true) {
+            $scope.followingAlbums.push(value);
+          }
         });
 
         console.log(vm.album);
