@@ -37,9 +37,6 @@
             <div class="pull-right">
                 <button type="button" name="button" id="button" class="btn btn-info" ui-sref="settings.add">Add Album</button>
             </div>
-
-
-
         </div>
     </div>
 </section>
@@ -74,7 +71,7 @@
                     <p>
                         <span ng-if="album.rating > 0">
                             Album Rating:
-                            <span uib-rating ng-model="album.rating" max="5" read-only="true"></span><br>
+                            <span class="no-focus" uib-rating ng-model="album.rating" max="5" read-only="true"></span><br>
                         </span>
                     </p>
                     <p>

@@ -189,6 +189,7 @@ h2 {
 .clicklable:hover {
     cursor: pointer;
 }
-.clicklable:focus {
+
+.no-focus:focus {
     outline: none;
 }

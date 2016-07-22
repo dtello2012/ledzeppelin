@@ -50,8 +50,15 @@
         </div>
         <div class="col-xs-12 col-sm-6">
             <h2>Rating:
-                <span uib-rating data-ng-model="vm.album.rating" data-max="5" data-read-only="true"></span>
+                <span class="no-focus" uib-rating data-ng-model="vm.album.rating" data-max="5" data-read-only="true"></span>
             </h2>
+            <div class="row pull-right">
+                <p class="col-sm-7">
+                    <a href="{{vm.album.external_urls.spotify}}" target="_blank">
+                        <img class="img-responsive" src="/images/design-resources-play-on-spotify.png" alt="">
+                    </a>
+                </p>
+            </div>
             <h3>Tracks</h3>
             <!--<table class="table table-striped">-->
                 <!--<tr ng-repeat="song in vm.songs">-->
