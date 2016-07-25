@@ -11,20 +11,11 @@
       '$timeout',
       '$state',
       '$uibModal',
-      '$sce',
-        function($stateParams, $log, albums, $scope, albumResource, _, $timeout, $state, $uibModal, $sce){
+
+        function($stateParams, $log, albums, $scope, albumResource, _, $timeout, $state, $uibModal){
         var vm = this;
         vm.invalid = false;
         $scope.followingAlbums = [];
-          vm.config = {
-            sources: [],
-            autoPlay: true,
-            tracks: [],
-            theme: "bower_components/videogular-themes-default/videogular.css",
-            plugins: {
-              poster: ""
-            }
-          };
 
 
 
