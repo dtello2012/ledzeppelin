@@ -1,4 +1,9 @@
-
+<div class="row">
+    <div class="col-xs-12">
+        <!--App navigation-->
+        <header ng-include="'app/modules/core/views/header.views.html'"></header>
+    </div>
+</div>
 <div class="row">
     <div class="hero-image--details" style="background-image: url({{vm.album.images[0].url}})">
         <!--Leave Empty-->
@@ -13,17 +18,17 @@
 </section>
 <section class="container card-shadow">
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 col-md-10">
             <h1>{{vm.album.name}}</h1>
         </div>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 col-md-2">
             <ul class="list-inline margin-top-20 pull-right">
                 <li>
                     <a class="text-info pull-right margin-top-20" ui-sref="settings.edit({id: vm.album.id})" stop-music>
                         Edit album
                     </a>
                 </li>
-                <li>
+                <li ng-if="vm.album.copy === true || vm.album.newAlbum">
                     <a class="pull-right margin-top-20" ng-click="vm.removeAlbum(vm.album)">
                         Delete
                     </a>
@@ -49,8 +54,15 @@
         </div>
         <div class="col-xs-12 col-sm-6">
             <h2>Rating:
-                <span uib-rating data-ng-model="vm.album.rating" data-max="5" data-read-only="true"></span>
+                <span class="no-focus" uib-rating data-ng-model="vm.album.rating" data-max="5" data-read-only="true"></span>
             </h2>
+            <div class="row pull-right" ng-if="vm.album.external_urls.spotify">
+                <p class="col-sm-7">
+                    <a href="{{vm.album.external_urls.spotify}}" target="_blank">
+                        <img class="img-responsive" src="/images/design-resources-play-on-spotify.png" alt="">
+                    </a>
+                </p>
+            </div>
             <h3>Tracks</h3>
             <table class="table table-striped">
                 <tr ng-repeat="song in vm.songs">
@@ -60,11 +72,15 @@
                     </td>
                 </tr>
             </table>
-            <!--<ol>-->
-                <!--<li ng-repeat="song in vm.songs">-->
-                    <!--<a  music-player="play" data-add-song="song" music-volume="0.5">{{song.title}}</a>-->
-                <!--</li>-->
-            <!--</ol>-->
+            <!--<table class="table table-striped">-->
+                <!--<tr ng-repeat="song in vm.songs">-->
+                    <!--<td>{{$index + 1}}</td>-->
+                    <!--<td class="clicklable">-->
+                        <!--{{song.url}}-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+
             <ul class="list-unstyled" ng-if="vm.album.copy || vm.invalid === true;">
                 <li>This is a copy of an Album or a new album with no tracks.</li>
             </ul>

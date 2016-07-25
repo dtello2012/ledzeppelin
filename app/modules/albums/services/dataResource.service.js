@@ -4,7 +4,7 @@
     angular.module('ledZepplin').factory('dataResource', function($resource){
 
         //console.log($resource('api/data/data.json'));
-        return $resource('api/data/data.json:id');
+        return $resource('api/data/data.json');
 
     });
 }());

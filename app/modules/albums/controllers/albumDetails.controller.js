@@ -11,20 +11,21 @@
       '$timeout',
       '$state',
       '$uibModal',
-      function($stateParams, $log, albums, $scope, albumResource, _, $timeout, $state, $uibModal){
-      var vm = this;
-      vm.invalid = false;
+
+        function($stateParams, $log, albums, $scope, albumResource, _, $timeout, $state, $uibModal){
+        var vm = this;
+        vm.invalid = false;
+        $scope.followingAlbums = [];
 
 
 
       vm.removeAlbum = function(album) {
-        
-
           var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'app/modules/albums/templates/deleteModal.template.html',
             controller: 'ModalInstanceCtrl',
             size: 'sm',
+            windowClass: 'delete-modal',
             resolve: {
               album: function () {
                 return album;
@@ -58,8 +59,13 @@
           vm.invalid = true;
           console.error(err.data.error.message);
         });
+        _.forEach(vm.albums, function(value, key) {
+          if(value.following === true) {
+            $scope.followingAlbums.push(value);
+          }
+        });
 
-        console.log(vm.album);
+
       });
 
       vm.getPlayList = function(){
@@ -72,13 +78,15 @@
               artist: vm.tracks[i].artists[0].name,
               url: vm.tracks[i].preview_url
             };
+
             vm.songs.push(vm.track);
           }
-          console.log(vm.songs);
+
         } else {
           console.log("No tracks");
         }
       };
+
 
     }]);
 }());

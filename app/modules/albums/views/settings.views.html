@@ -1,3 +1,9 @@
+<div class="row">
+    <div class="col-xs-12">
+        <!--App navigation-->
+        <header ng-include="'app/modules/core/views/header.views.html'"></header>
+    </div>
+</div>
 <div class="row" ng-if="vm.editing === true">
     <div class="hero-image--details" style="background-image: url({{vm.album.images[0].url}})">
         <!--Leave Empty-->
@@ -11,12 +17,11 @@
     </div>
 </section>
 <section class="container card-shadow">
-    <h1>{{vm.editing ? 'Edit': 'Add'}} Album</h1>
-    <h2>
-        Name: {{vm.album.name}}
-    </h2>
+    <h1>
+       {{vm.album.name || 'Album must have a name'}}
+    </h1>
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-1 col-lg-offset-1">
+        <div class="col-sm-6 col-md-4">
             <span ng-repeat="image in vm.album.images">
                 <img class="img-responsive" ng-src="{{image.url}}" alt="vm.album.name" ng-if="$index === 0">
             </span>
@@ -26,10 +31,12 @@
             <p>&nbsp;</p>
         </div>
         <div class="col-sm-6 col-md-4 col-md-offset-2 col-lg-offset-1">
+            <h2>{{vm.editing ? 'Edit': 'Add'}} Album</h2>
             <form class="form" name="settingsForm" novalidate>
                 <div class="form-group">
                     <label for="albumName">Album Name</label>
-                    <input type="text" class="form-control" id="albumName" ng-model="vm.album.name" required>
+                    <input ng-if="!vm.album.newAlbum && !vm.album.copy && vm.editing === true" type="text" class="form-control" id="albumName" ng-model="vm.album.name" ng-readonly="true" required>
+                    <input ng-if="vm.album.copy === true || vm.album.newAlbum === true || vm.editing === false" type="text" class="form-control" id="albumName" ng-model="vm.album.name" required>
                 </div>
                 <div class="form-group">
                     <label for="albumType">Album Type</label>
@@ -40,7 +47,7 @@
                 <div class="form-group">
                     <label>Album Type</label>
                         <h4>
-                            <span uib-rating ng-model="vm.album.rating" data-max="5" data-read-only="false" required></span>
+                            <span class="clicklable no-focus" uib-rating ng-model="vm.album.rating" data-max="5" data-read-only="false" required></span>
                         </h4>
                 </div>
                 <div class="row">
@@ -55,7 +62,8 @@
                     <div class="row">
 
                         <div class="col-xs-12 col-sm-6">
-                            <button type="button" class="btn btn-primary form-control" ui-sref="home">Cancel</button>
+                            <button ng-if="vm.editing === true" type="button" class="btn btn-primary form-control" ui-sref="details({id: vm.album.id})">Cancel</button>
+                            <button ng-if="vm.editing === false" type="button" class="btn btn-primary form-control" ui-sref="home">Cancel</button>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <button type="button" class="btn btn-danger form-control" ng-disabled="settingsForm.$invalid" ng-click="vm.saveAlbum()">Save</button>
@@ -63,6 +71,7 @@
                     </div>
                 </div>
             </form>
+            <p>&nbsp;</p>
         </div>
     </div>
 </section>

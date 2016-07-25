@@ -23,9 +23,6 @@
         }
         
         function saveAlbum(albumObj) {
-            // return Restangular.all('/data').post(albumObj).then(function (result) {
-            //     return result;
-            // });
             var ref = new Firebase("https://ledzeplin-5d3f7.firebaseio.com/albums/items/"); // assume value here is { foo: "bar" }
             return $firebaseObject(ref);
         }
