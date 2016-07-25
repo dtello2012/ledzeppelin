@@ -113,6 +113,15 @@ h2 {
     width: 100%;
 }
 
+.thumbnail__header {
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+.thumbnail__header a h3{
+    color: #0298cc;
+}
+
+
 .page-header {
     border-bottom: 0;
 }
@@ -193,3 +202,22 @@ h2 {
 .no-focus:focus {
     outline: none;
 }
+
+.delete-modal .modal-dialog .modal-content {
+    border-radius: 0;
+}
+
+.delete-modal .modal-dialog {
+    margin: 17% auto;
+}
+
+.modal-header {
+    border-bottom: 0;
+    text-align: center;
+}
+
+.modal-footer {
+    border-top: 0;
+    text-align: center;
+}
+

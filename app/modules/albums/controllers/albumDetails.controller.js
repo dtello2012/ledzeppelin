@@ -11,21 +11,30 @@
       '$timeout',
       '$state',
       '$uibModal',
-      function($stateParams, $log, albums, $scope, albumResource, _, $timeout, $state, $uibModal){
-      var vm = this;
-      vm.invalid = false;
+      '$sce',
+        function($stateParams, $log, albums, $scope, albumResource, _, $timeout, $state, $uibModal, $sce){
+        var vm = this;
+        vm.invalid = false;
         $scope.followingAlbums = [];
+          vm.config = {
+            sources: [],
+            autoPlay: true,
+            tracks: [],
+            theme: "bower_components/videogular-themes-default/videogular.css",
+            plugins: {
+              poster: ""
+            }
+          };
 
 
 
       vm.removeAlbum = function(album) {
-        
-
           var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'app/modules/albums/templates/deleteModal.template.html',
             controller: 'ModalInstanceCtrl',
             size: 'sm',
+            windowClass: 'delete-modal',
             resolve: {
               album: function () {
                 return album;
@@ -65,7 +74,7 @@
           }
         });
 
-        console.log(vm.album);
+
       });
 
       vm.getPlayList = function(){
@@ -78,13 +87,15 @@
               artist: vm.tracks[i].artists[0].name,
               url: vm.tracks[i].preview_url
             };
+
             vm.songs.push(vm.track);
           }
-          console.log(vm.songs);
+
         } else {
           console.log("No tracks");
         }
       };
+
 
     }]);
 }());

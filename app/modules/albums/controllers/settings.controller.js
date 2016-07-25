@@ -31,6 +31,9 @@
               if(vm.album.following === undefined) {
                 vm.album.following = false;
               }
+              if(vm.album.newAlbum === undefined) {
+                vm.album.newAlbum = false;
+              }
               var albumObj = {
                 name: vm.album.name,
                 type: 'album',
@@ -38,7 +41,7 @@
                 id: $state.params.id,
                 images: [],
                 following: vm.album.following,
-                newAlbum: false
+                newAlbum: vm.album.newAlbum
               };
 
               if(vm.editing === true) {

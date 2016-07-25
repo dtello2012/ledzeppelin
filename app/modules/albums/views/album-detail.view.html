@@ -28,7 +28,7 @@
                         Edit album
                     </a>
                 </li>
-                <li ng-if="vm.album.copy === true || vm.album.newAlbum === true">
+                <li ng-if="vm.album.copy === true || vm.album.newAlbum">
                     <a class="pull-right margin-top-20" ng-click="vm.removeAlbum(vm.album)">
                         Delete
                     </a>
@@ -64,22 +64,22 @@
                 </p>
             </div>
             <h3>Tracks</h3>
-            <!--<table class="table table-striped">-->
-                <!--<tr ng-repeat="song in vm.songs">-->
-                    <!--<td>{{$index + 1}}</td>-->
-                    <!--<td class="clicklable" music-player="play" data-add-song="song">-->
-                        <!--{{song.title}}-->
-                    <!--</td>-->
-                <!--</tr>-->
-            <!--</table>-->
             <table class="table table-striped">
                 <tr ng-repeat="song in vm.songs">
                     <td>{{$index + 1}}</td>
-                    <td class="clicklable">
-                        {{song.url}}
+                    <td class="clicklable" music-player="play" data-add-song="song">
+                        {{song.title}}
                     </td>
                 </tr>
             </table>
+            <!--<table class="table table-striped">-->
+                <!--<tr ng-repeat="song in vm.songs">-->
+                    <!--<td>{{$index + 1}}</td>-->
+                    <!--<td class="clicklable">-->
+                        <!--{{song.url}}-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--</table>-->
 
             <ul class="list-unstyled" ng-if="vm.album.copy || vm.invalid === true;">
                 <li>This is a copy of an Album or a new album with no tracks.</li>
